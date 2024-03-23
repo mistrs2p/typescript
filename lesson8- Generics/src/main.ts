@@ -22,6 +22,7 @@ const isTrue = <T>(arg: T): { arg: T; is: boolean } => {
   if (Array.isArray(arg) && !arg.length) {
     return { arg, is: false };
   }
+  // if (isObj(arg) && !Object.keys(arg as unknown as object).length) {
   if (isObj(arg) && !Object.keys(arg as keyof T).length) {
     return { arg, is: false };
   }
@@ -314,3 +315,32 @@ const usersArray = [
 ];
 
 console.log(getUsersProperty(usersArray, "email"));
+console.log(getUsersProperty(usersArray, "id"));
+
+class StateObject<T> {
+  private data: T;
+
+  constructor(value: T) {
+    this.data = value;
+  }
+
+  get state(): T {
+    return this.data;
+  }
+  set state(value: T) {
+    this.data = value;
+  }
+}
+
+const store = new StateObject<string>("Mahdi");
+console.log(store.state);
+
+store.state = "Ahmad";
+console.log(store.state);
+// store.state = 12;
+
+const myState = new StateObject<(string | number | boolean)[]>([12]);
+console.log(myState.state);
+
+myState.state = ["Dave", 12, "Mahdi"];
+console.log(myState.state);

@@ -64,4 +64,5 @@ var Grade;
     Grade[Grade["A"] = 10] = "A";
 })(Grade || (Grade = {}));
 // Those are enumirated
+console.log(Grade.U);
 console.log(Grade.B);

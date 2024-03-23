@@ -90,4 +90,5 @@ enum Grade {
   A,
 }
 // Those are enumirated
+console.log(Grade.U);
 console.log(Grade.B);

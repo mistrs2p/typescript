@@ -18,6 +18,7 @@ const isTrue = (arg) => {
     if (Array.isArray(arg) && !arg.length) {
         return { arg, is: false };
     }
+    // if (isObj(arg) && !Object.keys(arg as unknown as object).length) {
     if (isObj(arg) && !Object.keys(arg).length) {
         return { arg, is: false };
     }
@@ -291,3 +292,24 @@ const usersArray = [
     },
 ];
 console.log(getUsersProperty(usersArray, "email"));
+console.log(getUsersProperty(usersArray, "id"));
+class StateObject {
+    constructor(value) {
+        this.data = value;
+    }
+    get state() {
+        return this.data;
+    }
+    set state(value) {
+        this.data = value;
+    }
+}
+const store = new StateObject("Mahdi");
+console.log(store.state);
+store.state = "Ahmad";
+console.log(store.state);
+// store.state = 12;
+const myState = new StateObject([12]);
+console.log(myState.state);
+myState.state = ["Dave", 12, "Mahdi"];
+console.log(myState.state);
